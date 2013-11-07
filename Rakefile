@@ -10,12 +10,16 @@ task :prod do
 end
 
 task :test do
-	puts "Testing"
-	system "rspec specs/ingredients-spec.rb"
+	puts "Running all tests!"
+	Dir.glob("specs/**/*.rb").each do |spec_file|
+		puts "Running #{spec_file}"
+		system "rspec -fd #{spec_file}"
+	end
 end
 
 task :rebuild => :clean do
 	puts "Rebuilding ..."
+	puts " *** WARNING *** - gem version is currently hardcoded!"
 	system "gem build grub-objects.gemspec"
 	system "gem install grub-objects-0.0.1.gem"#todo - version on cmd-line maybe?
 end

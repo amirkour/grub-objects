@@ -5,6 +5,6 @@ Gem::Specification.new do |s|
 	s.date="2013-11-05"
 	s.description="Object models and their specs for grubalub.com"
 	s.summary=s.description
-	s.files=%w(README.md lib/grub-objects.rb lib/grub-objects/ingredients.rb specs/ingredients-spec.rb)
+	s.files=%w(README.md).concat(Dir.glob("**/*.rb"))
 	s.add_dependency('mongooz')
 end
